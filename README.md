@@ -40,10 +40,11 @@ The project utilizes the **National Gallery of Art Open Data**, which provides h
 ## Installation  
 To set up the project, clone the repository and install dependencies:  
 
-  ```bash`
+  ```bash
   git clone https://github.com/YOUR_USERNAME/HumanAI-Task2.git  
   cd HumanAI-Task2  
   pip install -r requirements.txt  
+  ```bash
 
 ## Execution Steps  
 
