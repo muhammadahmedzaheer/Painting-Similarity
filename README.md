@@ -8,19 +8,33 @@ The project utilizes the **National Gallery of Art Open Data**, which provides h
 
 ## Project Structure
 ├── images/                  # Downloaded painting images (not included in repo)
+
 ├── features.npy             # Extracted image features (not included in repo)
+
 ├── image_names.npy          # Image filenames (not included in repo)
+
 ├── similarity_scores.npy    # Full similarity matrix (not included in repo)
+
 ├── top_10_similar.npy       # Top 10 similar paintings per image (not included in repo)
+
 ├── download_images.py       # Script to download dataset
+
 ├── extract_features.py      # Extracts features using ResNet50
+
 ├── compute_similarity.py    # Computes cosine similarity matrix
+
 ├── extract_top_10.py        # Extracts top 10 similar images
+
 ├── display_similar.py       # Displays similar paintings
+
 ├── evaluate_unsupervised.py # Evaluates model performance
+
 ├── optimized_similarity.py  # Alternative approach computing only top 10
+
 ├── inspect_images.py        # Inspects a few images to confirm download has taken place
+
 │── published_images.rar     # Contains published_images.csv from which the download_images.py downloads all the images in the images folder
+
 │── README.md                # Project documentation
 
 ## Installation  
