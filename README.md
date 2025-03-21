@@ -147,7 +147,6 @@ Evaluation of the model is based on three key metrics: **Cosine Similarity, Intr
 - **Purpose:** Measures how **dissimilar** a painting is to randomly selected paintings.  
 - **How it works:** The model selects **10 random paintings** and calculates their average similarity to the given painting. A **low inter-class similarity** indicates that the model correctly differentiates between similar and non-similar paintings.  
 
----
 Metric                 | Purpose  
 ---------------------- | ---------------------------------------------------------  
 Cosine Similarity      | Measures pairwise similarity between paintings.  
