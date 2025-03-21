@@ -1,0 +1,15 @@
+# requirements.txt  
+
+# Core Libraries  
+numpy  
+pandas  
+tqdm  
+
+# Machine Learning & Deep Learning  
+torch  
+torchvision  
+scikit-learn  
+
+# Image Processing  
+Pillow  
+matplotlib  
