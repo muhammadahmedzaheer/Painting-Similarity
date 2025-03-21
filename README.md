@@ -129,13 +129,49 @@ Example:
 - Using only top 10 matches → Intra = 0.88, Inter = 0.86 (Poor distinction, as random images appear more similar than they actually are)  
 
 ## Evaluation Metrics  
+
+Evaluation of the model is based on three key metrics: **Cosine Similarity, Intra-Class Similarity, and Inter-Class Similarity**.  
+
+### **1. Cosine Similarity**  
+- **Displayed by:** `display_similar.py`  
+- **Purpose:** Measures the **pairwise similarity** between two paintings based on their extracted feature vectors.  
+- **How it works:** When `display_similar.py` is run, it randomly selects a painting and shows its **top 10 most similar images**, along with their **cosine similarity scores**. Higher scores indicate greater similarity.  
+
+### **2. Intra-Class Similarity**  
+- **Displayed by:** `evaluate_unsupervised.py`  
+- **Purpose:** Measures how **visually similar** the **top 10 retrieved images** are to a given painting.  
+- **How it works:** The average cosine similarity is calculated between an image and its **top 10 similar matches** (as stored in `top_10_similar.npy`). A **high intra-class similarity** suggests that the model correctly groups paintings that are truly alike.  
+
+### **3. Inter-Class Similarity**  
+- **Displayed by:** `evaluate_unsupervised.py`  
+- **Purpose:** Measures how **dissimilar** a painting is to randomly selected paintings.  
+- **How it works:** The model selects **10 random paintings** and calculates their average similarity to the given painting. A **low inter-class similarity** indicates that the model correctly differentiates between similar and non-similar paintings.  
+
+---
 Metric                 | Purpose  
 ---------------------- | ---------------------------------------------------------  
 Cosine Similarity      | Measures pairwise similarity between paintings.  
 Intra-Class Similarity | Ensures similar paintings are correctly grouped (high).  
 Inter-Class Similarity | Ensures dissimilar paintings are correctly separated (low).  
 
-The goal is to achieve a significantly higher intra-class similarity compared to inter-class similarity.  
+
+### **Why Are All Three Metrics Necessary?**  
+
+Each of these three metrics plays a crucial role in evaluating the effectiveness of the model:  
+
+- **Cosine Similarity (display_similar.py)** only shows individual similarity scores between an image and its closest matches. While useful, it does **not** tell us how well the model separates similar and dissimilar paintings overall.  
+
+- **Intra-Class Similarity (evaluate_unsupervised.py)** ensures that paintings retrieved as similar are truly close in feature space. If this score is low, the model **fails to retrieve relevant paintings correctly**.  
+
+- **Inter-Class Similarity (evaluate_unsupervised.py)** ensures that randomly selected, unrelated paintings have **low similarity** to the query painting. If this score is high, it means the model **is not effectively distinguishing between different paintings**.  
+
+The **ideal result** is:  
+✅ **High Intra-Class Similarity** → The model correctly identifies paintings that belong together.  
+✅ **Low Inter-Class Similarity** → The model successfully differentiates between unrelated paintings.  
+
+If **inter-class similarity is too high**, it means the model is not discriminative enough and is incorrectly labeling unrelated paintings as similar.  
+
+By combining these three metrics, we get a complete picture of **both retrieval quality and discrimination ability** of the model. 🚀  
 
 #### Notes & Limitations  
 - similarity_scores.npy (56GB) is not included in the repository due to storage constraints.  
