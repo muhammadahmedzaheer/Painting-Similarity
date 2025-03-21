@@ -43,8 +43,8 @@ To set up the project, clone the repository and install dependencies:
   ```bash
   git clone https://github.com/YOUR_USERNAME/HumanAI-Task2.git  
   cd HumanAI-Task2  
-  pip install -r requirements.txt  
-  ```bash
+  pip install -r requirements.txt
+  ```
 
 ## Execution Steps  
 
